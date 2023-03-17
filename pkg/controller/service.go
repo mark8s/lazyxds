@@ -27,7 +27,7 @@ import (
 func (c *AggregationController) syncService(ctx context.Context, clusterName string, service *corev1.Service) (err error) {
 	selectors := c.selectors
 	id := utils.FQDN(service.Name, service.Namespace)
-
+	//
 	matched, err := c.matchDiscoverySelector(selectors, service)
 	if err != nil {
 		return err

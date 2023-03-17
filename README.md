@@ -220,3 +220,10 @@ Memory compare:
 EDS and CDS compare:
 
 ![performance-test-xds](docs/images/performance-test-xds.png)
+
+## Reference
+[大规模服务网格性能优化 | Aeraki xDS 按需加载](https://cloud.tencent.com/developer/article/1922778)
+
+[Use discovery selectors to configure namespaces for your Istio service mesh](https://istio.io/latest/blog/2021/discovery-selectors/)
+
+
