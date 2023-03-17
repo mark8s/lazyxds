@@ -25,9 +25,11 @@ import (
 )
 
 func (c *AggregationController) syncService(ctx context.Context, clusterName string, service *corev1.Service) (err error) {
+	// istio-discovery: enabled
 	selectors := c.selectors
+	// format: name.namespace.svc.cluster.local
 	id := utils.FQDN(service.Name, service.Namespace)
-	//
+	// Determine whether the namespace to which svc belongs is included in discovery selectors
 	matched, err := c.matchDiscoverySelector(selectors, service)
 	if err != nil {
 		return err

@@ -106,7 +106,7 @@ func (svc *Service) UpdateClusterService(clusterName string, service *corev1.Ser
 		ClusterIP: service.Spec.ClusterIP,
 		HTTPPorts: make(map[string]struct{}),
 		TCPPorts:  make(map[string]struct{}),
-
+		// when annotation contains "lazy-xds": "true" ,LazyEnabled is true
 		LazyEnabled: utils.IsLazyEnabled(service.Annotations),
 		Selector:    service.Spec.Selector,
 	}

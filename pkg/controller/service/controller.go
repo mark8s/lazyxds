@@ -223,5 +223,6 @@ func (c *Controller) syncFromKey(ctx context.Context, key string) error {
 		return c.deleteService(ctx, c.clusterName, utils.FQDN(name, ns))
 	}
 
+	// sync k8s svc
 	return c.syncService(ctx, c.clusterName, service)
 }
