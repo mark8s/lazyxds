@@ -97,6 +97,7 @@ func (c *AggregationController) reconcileService(ctx context.Context, svc *model
 			c.services.Delete(svc.ID())
 		}
 	}()
+	// service 的 port、ip 变动才触发sync
 	if !svc.NeedReconcileService() {
 		return nil
 	}

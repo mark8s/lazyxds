@@ -28,6 +28,7 @@ func (c *AggregationController) syncServiceEntry(ctx context.Context, serviceEnt
 		return nil
 	}
 
+	// name.namespace
 	id := utils.ObjectID(serviceEntry.Name, serviceEntry.Namespace)
 
 	var oldHosts, newHosts []string

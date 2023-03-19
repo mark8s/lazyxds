@@ -51,6 +51,7 @@ func (c *AggregationController) syncVirtualService(ctx context.Context, vs *isti
 
 // return whether the value changed.
 func (c *AggregationController) updateHTTPServiceBinding(vs *istio.VirtualService) bool {
+	//eg: reviews.default.svc.cluster.local
 	id := utils.FQDN(vs.Name, vs.Namespace)
 	binding := make(map[string]struct{})
 
@@ -68,10 +69,12 @@ func (c *AggregationController) updateHTTPServiceBinding(vs *istio.VirtualServic
 		if strings.Contains(host, "*") {
 			continue
 		}
+		// host为短域名，eg： reviews
 		binding[host] = struct{}{}
 	}
 
 	if len(binding) == 0 {
+		// 存在key,则删除key
 		_, ok := c.httpServicesBinding.LoadAndDelete(id)
 		return ok
 	}

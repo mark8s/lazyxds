@@ -195,6 +195,7 @@ func (c *AggregationController) ClusterClient(name string) *kubernetes.Clientset
 func (c *AggregationController) HandleAccess(fromIP, svcID, toIP string) error {
 	c.log.Info("HandleAccess", "fromIP", fromIP, "svcID", svcID, "toIP", toIP)
 
+	// 基于endpoint subsets 反转得到 创建 endpoint的 svc
 	fromSvcID := c.IP2ServiceID(fromIP)
 	if fromSvcID == "" {
 		return nil

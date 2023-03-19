@@ -26,10 +26,12 @@ import (
 
 // Service represent one service cross multi-cluster
 type Service struct {
-	mu            sync.Mutex // todo
-	Name          string
-	Namespace     string
-	Distribution  map[string]*clusterServiceStatus
+	mu        sync.Mutex // todo
+	Name      string
+	Namespace string
+	// service details
+	Distribution map[string]*clusterServiceStatus
+	// 目的地服务/出口服务，基于accessLog outbound
 	EgressService map[string]struct{} // http service which reported from als
 	NSLazy        NSLazyStatus
 
